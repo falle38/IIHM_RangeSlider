@@ -7,11 +7,11 @@ public class BoundedSlider implements JBoundedSlider{
 	private int upperRange;
 	private int extent;
 
-	public BoundedSlider(int lowerRange, int upperRange ){
+	public BoundedSlider(int lowerRange, int upperRange, int min, int max ){
 		this.lowerRange = lowerRange;
 		this.upperRange = upperRange;
-		this.min= lowerRange;
-		this.max = upperRange;
+		this.min= min;
+		this.max = max;
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class BoundedSlider implements JBoundedSlider{
 	}
 	@Override
 	public int getExtent() {
-		return this.extent;
+		return this.upperRange - this.lowerRange;
 	}
 	@Override
 	public void setExtent(int min, int max) {
