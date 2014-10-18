@@ -69,12 +69,10 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 			if(distLowerThumb <= distUpperThumb && this.lowerThumbDrag && this.lowerThumbSelected){
 				this.boundedSlider.setLowerRange(x);
 				this.boundedSlider.setUpperRange(this.boundedSlider.getUpperRange() + distLowerThumb);
-				System.out.println("boucle1");
 			}
 			else{
 				this.boundedSlider.setUpperRange(x);
 				this.boundedSlider.setLowerRange(this.boundedSlider.getLowerRange() - distUpperThumb);
-				System.out.println("boucle2");
 			}
 		}
 		repaint();
@@ -103,12 +101,14 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 		else {
 			this.upperThumbSelected=true;
 		}
-
 	}
 
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {}
+	public void mouseReleased(MouseEvent arg0) {
+		this.lowerThumbDrag = false;
+		this.upperThumbDrag = false;
+	}
 
 
 	@Override
