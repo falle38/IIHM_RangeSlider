@@ -59,15 +59,40 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 		int middleRange = (Math.abs(this.boundedSlider.getUpperRange() - this.boundedSlider.getLowerRange()))/2;
 		
 		System.out.println("le milieu" + middleRange);
-		if(distanceLowerThumb <= distanceUpperThumb && this.lowerThumbDrag && this.lowerThumbSelected){
+		//if(distanceLowerThumb <= distanceUpperThumb && this.lowerThumbDrag && this.lowerThumbSelected){
+		if(x >= this.boundedSlider.getMin() && x <= this.boundedSlider.getLowerRange() ){
+			System.out.println("here");
 			this.boundedSlider.setLowerRange(x);
 			this.boundedSlider.setUpperRange(this.boundedSlider.getUpperRange() - distanceLowerThumb);
 		}
 
-		if(distanceLowerThumb > distanceUpperThumb && this.upperThumbDrag && this.upperThumbSelected){
+		//if(distanceLowerThumb > distanceUpperThumb && this.upperThumbDrag && this.upperThumbSelected){
+		if(x >= this.boundedSlider.getUpperRange()){
+			
+			//System.out.println(this.boundedSlider.getMax());
 			this.boundedSlider.setUpperRange(x);
 			this.boundedSlider.setLowerRange(this.boundedSlider.getLowerRange() + distanceUpperThumb);
 		}
+		
+		if(x>=this.boundedSlider.getLowerRange() && x < this.boundedSlider.getUpperRange()){
+			
+			//System.out.println(this.boundedSlider.getMax());
+			int distLowerThumb = Math.abs(x - this.boundedSlider.getLowerRange());
+			int distUpperThumb = Math.abs(x - this.boundedSlider.getUpperRange());
+			
+			if(distLowerThumb <= distUpperThumb && this.lowerThumbDrag && this.lowerThumbSelected){
+				this.boundedSlider.setLowerRange(x);
+				this.boundedSlider.setUpperRange(this.boundedSlider.getUpperRange() + distLowerThumb);
+				System.out.println("boucle1");
+			}
+			else{
+				this.boundedSlider.setUpperRange(x);
+				this.boundedSlider.setLowerRange(this.boundedSlider.getLowerRange() - distUpperThumb);
+				System.out.println("boucle2");
+			}
+			
+		}
+		
 		
 		/*if(this.boundedSlider.getLowerRange() <= x && x< this.boundedSlider.getUpperRange()){
 			this.boundedSlider.setLowerRange(x);
@@ -78,7 +103,9 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseEntered(MouseEvent arg0) {
+		
+	}
 
 
 	@Override
@@ -86,7 +113,19 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {}
+	public void mousePressed(MouseEvent arg0) {
+		int x = arg0.getX();
+		int distanceLowerThumb = Math.abs(x - this.boundedSlider.getLowerRange());
+		int distanceUpperThumb = Math.abs(x - this.boundedSlider.getUpperRange());
+		
+		if (distanceLowerThumb <= distanceUpperThumb) {
+			this.lowerThumbSelected = true;
+		}
+		else {
+			this.upperThumbSelected=true;
+		}
+		
+	}
 
 
 	@Override
