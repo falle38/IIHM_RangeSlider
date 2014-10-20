@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -28,13 +29,16 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 		this.upperThumbSelected = true;
 		this.lowerThumbDrag = true;
 		this.upperThumbDrag = true;
+		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 	}
 
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.drawString("min ", 20,10);
-		g.drawString("max ", 80,10);
+		g.drawString("lower range:", 20,10);
+		g.drawString(Integer.toString(this.boundedSlider.getLowerRange()), 100, 10);
+		g.drawString("upper range: ", 20,30);
+		g.drawString(Integer.toString(this.boundedSlider.getUpperRange()), 100, 30);
 		g.setColor(Color.GRAY);
 		g.fillRect(this.boundedSlider.getMin(), (getHeight() / 2) - 10, getWidth()
 				/*- (2 * this.boundedSlider.getMax())*/, 10);
@@ -92,6 +96,7 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		int x = arg0.getX();
+		int y = arg0.getY();
 		int distanceLowerThumb = Math.abs(x - this.boundedSlider.getLowerRange());
 		int distanceUpperThumb = Math.abs(x - this.boundedSlider.getUpperRange());
 
@@ -106,10 +111,9 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		this.lowerThumbDrag = false;
-		this.upperThumbDrag = false;
+		//this.lowerThumbDrag = false;
+		//this.upperThumbDrag = false;
 	}
-
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
