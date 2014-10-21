@@ -8,7 +8,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		RangeSlider rangeSlider = new RangeSlider(20,60,0,100);
+		RangeSlider rangeSlider = new RangeSlider(20,60,0,300);
 		JFrame frame = new JFrame ("Range Slider");
 		frame.setAlwaysOnTop(true);
 		frame.setVisible(true);

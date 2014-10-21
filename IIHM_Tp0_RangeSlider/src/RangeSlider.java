@@ -24,7 +24,6 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 
 	public RangeSlider (int lowerRange, int upperRange, int min, int max){
 		this.boundedSlider = new BoundedSlider(lowerRange, upperRange, min, max);
-		this.addMouseListener(this);
 		this.lowerThumbSelected = true;
 		this.upperThumbSelected = true;
 		this.lowerThumbDrag = true;
@@ -50,6 +49,7 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 		g.fillOval(this.boundedSlider.getLowerRange(), this.getHeight()/2 -10, 10, 10);
 		g.setColor(Color.GREEN);
 		g.fillOval(this.boundedSlider.getUpperRange(),  this.getHeight()/2 -10, 10, 10);
+		
 	}
 
 
@@ -63,7 +63,7 @@ public class RangeSlider extends JComponent implements MouseListener, MouseMotio
 			this.boundedSlider.setLowerRange(x);
 			this.boundedSlider.setUpperRange(this.boundedSlider.getUpperRange() - distanceLowerThumb);
 		}
-		if(x >= this.boundedSlider.getUpperRange()){
+		if(x >= this.boundedSlider.getUpperRange() && x <=this.boundedSlider.getMax()){
 			this.boundedSlider.setUpperRange(x);
 			this.boundedSlider.setLowerRange(this.boundedSlider.getLowerRange() + distanceUpperThumb);
 		}
