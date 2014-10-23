@@ -43,8 +43,10 @@ public class Finder extends JPanel implements EventSliderListener{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		for(int i = 0; i < houses.size(); i++){
-			//if(ensure(houses.get(i).getValeurbien(),this.prixMinimum,this.prixMaximum) && ensure(houses.get(i).getNbpièces(),this.nbpieceMin,this.nbpieceMax)) {
-				//System.out.println("for " +i+ " ensure is true and price and value are " +houses.get(i).valeurbien+" "+houses.get(i).nbpièces);
+			if(houses.get(i).getValeurbien() >= this.prixMinimum
+					&& houses.get(i).getValeurbien() <= this.prixMaximum
+					&& houses.get(i).getNbpieces() >= this.nbpieceMin
+					&& houses.get(i).getNbpieces()<= this.nbpieceMax)
 				g.setColor(Color.WHITE);	
 				g.drawOval(houses.get(i).getCordX(), houses.get(i).getCordY(), 10 , 10);
 				g.fillOval(houses.get(i).getCordX(), houses.get(i).getCordY(), 10 , 10);

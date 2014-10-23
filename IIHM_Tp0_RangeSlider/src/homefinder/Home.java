@@ -7,11 +7,11 @@ public class Home {
 	int nbpieces; 
 	int valeurbien;
 	
-	public Home(int cordX, int cordY, int nbpièces, int valeurbien) {
+	public Home(int cordX, int cordY, int nbpieces, int valeurbien) {
 		super();
 		this.cordX = cordX;
 		this.cordY = cordY;
-		this.nbpieces = nbpièces;
+		this.nbpieces = nbpieces;
 		this.valeurbien = valeurbien;
 	}
 	
