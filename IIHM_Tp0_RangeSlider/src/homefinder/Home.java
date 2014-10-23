@@ -4,14 +4,14 @@ public class Home {
 	
 	int cordX;
 	int cordY;
-	int nbpièces; 
+	int nbpieces; 
 	int valeurbien;
 	
 	public Home(int cordX, int cordY, int nbpièces, int valeurbien) {
 		super();
 		this.cordX = cordX;
 		this.cordY = cordY;
-		this.nbpièces = nbpièces;
+		this.nbpieces = nbpièces;
 		this.valeurbien = valeurbien;
 	}
 	
@@ -27,11 +27,11 @@ public class Home {
 	public void setCordY(int cordY) {
 		this.cordY = cordY;
 	}
-	public int getNbpièces() {
-		return nbpièces;
+	public int getNbpieces() {
+		return nbpieces;
 	}
-	public void setNbpièces(int nbpièces) {
-		this.nbpièces = nbpièces;
+	public void setNbpieces(int nbpieces) {
+		this.nbpieces = nbpieces;
 	}
 	public int getValeurbien() {
 		return valeurbien;
