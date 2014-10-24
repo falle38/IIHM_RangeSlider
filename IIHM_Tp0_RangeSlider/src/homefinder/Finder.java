@@ -29,7 +29,7 @@ public class Finder extends JPanel implements EventSliderListener{
 		houses = new ArrayList<Home>();
 
 		for(int i = 0; i < size; i++){
-
+            //les coordonnées ainsi que les prix et le nombre de pièces sont générées aléatoirement de façon uniforme
 			int cordX = getRandomInt(0,1000);
 			int cordY = getRandomInt(0,1000);
 			int price = getRandomInt(0,300);
@@ -40,6 +40,7 @@ public class Finder extends JPanel implements EventSliderListener{
 		}
 	}
 
+    //permet d'effectuer le filtrage des maisons	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		for(int i = 0; i < houses.size(); i++){
@@ -51,7 +52,7 @@ public class Finder extends JPanel implements EventSliderListener{
 
 		}
 		
-
+    //cette méthode permet de vérifier si la valeur du bien ou du nombre de pièces respecte les contraintes 
 	public boolean ensure(int value,int limit1,int limit2 ) {
     	return (value >= limit1 && value <= limit2);
         }
@@ -69,6 +70,7 @@ public class Finder extends JPanel implements EventSliderListener{
 		}
 	}
 	
+	//permet de génerer un nombre de façon uniformèment aléatoire entre min et max
 	public int getRandomInt(int min, int max) {
 		  return (int) Math.floor(Math.random() * (max - min + 1) + min);
 		}
