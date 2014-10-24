@@ -1,10 +1,14 @@
 package homefinder;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,42 +28,49 @@ public class GeneralMain {
 	JFrame frame = new JFrame ("Home Finder");
 	frame.setSize(1000, 800);
 	frame.setVisible(true);
+//	ImagePanel img = new ImagePanel(new ImageIcon("pool.jpg").getImage());
+//	frame.getContentPane().add(img);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	RangeSlider rangeSlider = new RangeSlider(1,20,60,0,300);
 	RangeSlider rangeSlider2 = new RangeSlider(2,20,60,0,300);
-	rangeSlider.setPreferredSize(new Dimension(400,100));
-	rangeSlider2.setPreferredSize(new Dimension(400,100));
-	
-
 	Finder f = new Finder(100);
 	rangeSlider.getBoundedSlider().addEventSliderListener(f);
 	rangeSlider2.getBoundedSlider().addEventSliderListener(f);
-	rangeSlider.setBorder(BorderFactory.createLineBorder(Color.black));
-	rangeSlider2.setBorder(BorderFactory.createLineBorder(Color.black));
 	f.setPreferredSize(new Dimension(1000,500));
-	f.setBackground(Color.BLACK);
+	f.setBackground(Color.DARK_GRAY);
 	
 	
-	JPanel panelPrincipal = new JPanel();
-	panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
-	panelPrincipal.add(f);
+	
+	rangeSlider.setPreferredSize(new Dimension(450,300));
+	rangeSlider2.setPreferredSize(new Dimension(450,300));
 	
 	
-	JPanel dessous = new JPanel();
-	dessous.setLayout(new BoxLayout(dessous, BoxLayout.X_AXIS));
-	dessous.add(rangeSlider);
+	
+	
+	
+	JPanel map = new JPanel();
+	
+	map.setLayout(new BoxLayout(map, BoxLayout.X_AXIS));
+	map.add(f);
+	
+	
+	JPanel controllers = new JPanel();
+	controllers.setLayout(new BoxLayout(controllers, BoxLayout.Y_AXIS));
+	controllers.add(rangeSlider);
 	JPanel separator = new JPanel();
-	separator.setBackground(Color.LIGHT_GRAY);
-	separator.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Color.BLACK)); 
-	dessous.add(separator);
-	dessous.add(rangeSlider2);
+	separator.setBackground(Color.BLUE);
+	
+	controllers.add(separator);
+	controllers.add(rangeSlider2);
 
 
-	panelPrincipal.add(dessous);
-	frame.add(panelPrincipal);
+	map.add(controllers);
+	frame.add(map);
 
 	}
 
 
 }
+
+
